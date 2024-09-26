@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class LanguageCodeConverter {
 
-    // !! TODO Task: pick appropriate instance variables to store the data necessary for this class
+    // !!DO Task: pick appropriate instance variables to store the data necessary for this class
     // map to store original term as key, its translation as value
     private final Map<String, String> countrytocode = new HashMap<>();
     // map storing code as key, country as value
@@ -40,7 +40,7 @@ public class LanguageCodeConverter {
             List<String> lines = Files.readAllLines(Paths.get(getClass()
                     .getClassLoader().getResource(filename).toURI()));
 
-            // !! TODO Task: use lines to populate the instance variable
+            // !!DO Task: use lines to populate the instance variable
             //           tip: you might find it convenient to create an iterator using lines.iterator()
             // declares variable "line" of type String
             // each iteration: @line@ will hold current element (an object from array of languages)
@@ -64,7 +64,7 @@ public class LanguageCodeConverter {
      * @return the name of the language corresponding to the code
      */
     public String fromLanguageCode(String code) {
-        // !! TODO Task: update this code to use your instance variable to return the correct value
+        // !!DO Task: update this code to use your instance variable to return the correct value
         return codetocountry.get(code);
     }
 
@@ -74,7 +74,7 @@ public class LanguageCodeConverter {
      * @return the 2-letter code of the language
      */
     public String fromLanguage(String language) {
-        // !! TODO Task: update this code to use your instance variable to return the correct value
+        // !!DO Task: update this code to use your instance variable to return the correct value
         return countrytocode.get(language);
     }
 
@@ -83,7 +83,7 @@ public class LanguageCodeConverter {
      * @return how many languages are included in this code converter.
      */
     public int getNumLanguages() {
-        // !! TODO Task: update this code to use your instance variable to return the correct value
+        // !!DO Task: update this code to use your instance variable to return the correct value
         return count;
     }
 }

@@ -18,7 +18,6 @@ import org.json.JSONObject;
  */
 public class JSONTranslator implements Translator {
 
-    // TODO Task: pick appropriate instance variables for this class
     private final Map<String, String> translations = new HashMap<>();
 
     /**
@@ -42,7 +41,7 @@ public class JSONTranslator implements Translator {
 
             JSONArray jsonArray = new JSONArray(jsonString);
 
-            // !! TODO Task: use the data in the jsonArray to populate your instance variables
+            // !ODO Task: use the data in the jsonArray to populate your instance variables
             //            Note: this will likely be one of the most substantial pieces of code you write in this lab.
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -56,7 +55,7 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountryLanguages(String country) {
-        // TODO Task: return an appropriate list of language codes,
+        // !!DO Task: return an appropriate list of language codes,
         //            but make sure there is no aliasing to a mutable object
         List<String> langCode = new ArrayList<>();
         for (String key : translations.keySet()) {
@@ -69,14 +68,14 @@ public class JSONTranslator implements Translator {
 
     @Override
     public List<String> getCountries() {
-        // TODO Task: return an appropriate list of country codes,
+        // !!DO Task: return an appropriate list of country codes,
         //            but make sure there is no aliasing to a mutable object
         return new ArrayList<>(translations.keySet());
     }
 
     @Override
     public String translate(String country, String language) {
-        // TODO Task: complete this method using your instance variables as needed
+        // !!DO Task: complete this method using your instance variables as needed
         // Check if the translations map contains the language code as a key
         if (translations.containsKey(language)) {
             String translation = translations.get(language);
