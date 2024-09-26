@@ -21,9 +21,8 @@ public class JSONTranslationExample {
         try {
             // this next line of code reads in a file from the resources folder as a String,
             // which we then create a new JSONArray object from.
-            // TODO CheckStyle: Line is longer than 120 characters
-            //                  (note: you can split a line such that the next line starts with a .method()... call
-            String jsonString = Files.readString(Paths.get(getClass().getClassLoader().getResource("sample.json").toURI()));
+            String jsonString = Files.readString(Paths.get(getClass().getClassLoader().getResource("sample.json")
+                    .toURI()));
             this.jsonArray = new JSONArray(jsonString);
         }
         catch (IOException | URISyntaxException ex) {
@@ -33,30 +32,52 @@ public class JSONTranslationExample {
 
     /**
      * Returns the Spanish translation of Canada.
+     *
      * @return the Spanish translation of Canada
      */
     public String getCanadaCountryNameSpanishTranslation() {
-
-        // TODO Checkstyle: '30' is a magic number.
-        JSONObject canada = jsonArray.getJSONObject(30);
+        JSONObject canada = jsonArray.getJSONObject(CANADA_INDEX);
         return canada.getString("es");
     }
 
-    // TODO Task: Complete the method below to generalize the above to get the country name
-    //            for any country code and language code from sample.json.
-
     /**
      * Returns the name of the country based on the provided country and language codes.
-     * @param countryCode the country, as its three-letter code.
+     *
+     * @param countryCode  the country, as its three-letter code.
      * @param languageCode the language to translate to, as its two-letter code.
      * @return the translation of country to the given language or "Country not found" if there is no translation.
      */
     public String getCountryNameTranslation(String countryCode, String languageCode) {
-        return "Country not found";
+        // Default result
+        String result = "Country not found";
+        try {
+            // Load the JSON file using Files.readString
+            String jsonString = Files.readString(Paths.get(getClass().getClassLoader().getResource("sample.json")
+                    .toURI()));
+            JSONObject jsonData = new JSONObject(jsonString);
+
+            // Check if the country code exists in the JSON data
+            if (jsonData != null && jsonData.has(countryCode)) {
+                JSONObject countryData = jsonData.getJSONObject(countryCode);
+
+                // Check if the language translation exists
+                if (countryData.has(languageCode)) {
+                    // Update the result if the translation is found
+                    result = countryData.getString(languageCode);
+                }
+            }
+        }
+        // Handle any exceptions while reading the file
+        catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+        // Return the result at the end
+        return result;
     }
 
     /**
      * Prints the Spanish translation of Canada.
+     *
      * @param args not used
      */
     public static void main(String[] args) {
