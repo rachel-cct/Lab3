@@ -27,7 +27,7 @@ public class InLabByHandTranslator implements Translator {
     @Override
     public List<String> getCountryLanguages(String country) {
         if (CANADA.equals(country)) {
-            return new ArrayList<>(List.of("de", "en", "zh"));
+            return new ArrayList<>(List.of("de", "en", "zh", "es", "sw"));
         }
         return new ArrayList<>();
     }
@@ -54,7 +54,7 @@ public class InLabByHandTranslator implements Translator {
     public String translate(String country, String language) {
         String translated = "";
         if (CANADA.equals(country)) {
-            if ("ge".equals(language)) {
+            if ("de".equals(language)) {
                 translated = "Kanada";
             }
             else if ("en".equals(language)) {
