@@ -42,10 +42,11 @@ public class LanguageCodeConverter {
 
             // !! TODO Task: use lines to populate the instance variable
             //           tip: you might find it convenient to create an iterator using lines.iterator()
-            Iterator<String> iterator = lines.iterator();
-            while (iterator.hasNext()) {
-                String line = iterator.next();
+            // declares variable "line" of type String
+            // each iteration: @line@ will hold current element (an object from array of languages)
+            for (String line : lines) {
                 String[] parts = line.split("\t");
+                // parts is a list of string, each with parts[0] and parts[1]
                 this.countrytocode.put(parts[0], parts[1]);
                 this.codetocountry.put(parts[1], parts[0]);
                 count++;

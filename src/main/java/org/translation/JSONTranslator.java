@@ -71,8 +71,7 @@ public class JSONTranslator implements Translator {
     public List<String> getCountries() {
         // TODO Task: return an appropriate list of country codes,
         //            but make sure there is no aliasing to a mutable object
-        List<String> countryCode = new ArrayList<>(translations.keySet());
-        return countryCode;
+        return new ArrayList<>(translations.keySet());
     }
 
     @Override
