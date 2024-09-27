@@ -51,7 +51,7 @@ public class JSONTranslationExample {
         // Default result
         String result = "Country not found";
         try {
-            // Load the JSON file using Files.readString
+            // Load the JSON file using Files.readString!
             String jsonString = Files.readString(Paths.get(getClass().getClassLoader().getResource("sample.json")
                     .toURI()));
             JSONObject jsonData = new JSONObject(jsonString);
